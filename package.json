@@ -4,8 +4,13 @@
   "description": "To make it easy for you to get started with GitLab, here's a list of recommended next steps.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel serve src/pages/index.html",
+    "build": "rm -rf build && rm -rf .parcel-cache && parcel build ./src/pages/index.html --no-cache --no-source-maps --dist-dir dist"
   },
   "author": "thang ngo",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.10.1",
+    "typescript": "^5.2.2"
+  }
 }
