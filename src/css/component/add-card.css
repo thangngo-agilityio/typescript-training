@@ -1,0 +1,67 @@
+.manage-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% / 5.5);
+  height: 299px;
+  margin-bottom: 16px;
+  border-radius: var(--radius-primary);
+  border: 1px dashed var(--color-primary);
+  background: none;
+  cursor: pointer;
+  opacity: 1;
+  transition: .4s;
+}
+
+.manage-title {
+  color: var(--color-primary);
+  font-size: 16px;
+  font-weight: 600;
+  transition: .4s;
+  position: relative;
+  top: 22px;
+}
+
+.manage-title::before,
+.manage-title::after {
+  position: absolute;
+  content: '';
+  top: -42px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  transition: .4s;
+}
+
+.manage-title::before {
+  background: url(../../assets/icon/icon_plus.svg) center/cover no-repeat;
+  opacity: 1;
+}
+
+.manage-title::after {
+  background: url(../../assets/icon/icon_plus_white.svg) center/cover no-repeat;
+  opacity: 0;
+}
+
+.manage-card:hover {
+  background-color: var(--color-primary);
+  box-shadow: var(--shadow-tertiary);
+}
+
+.manage-card:hover .manage-title {
+  color: var(--color-secondary);
+}
+
+.manage-card:hover .manage-title::before{
+  opacity: 0;
+}
+
+.manage-card:hover .manage-title::after{
+  opacity: 1;
+}
+
+
+.card-wrapper {
+  text-align: center;
+}
