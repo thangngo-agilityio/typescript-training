@@ -1,0 +1,28 @@
+:root {
+  /* color variable */
+  --color-default: #1f1d2b;
+  --color-primary: #EA7c69;
+  --color-secondary: #fff;
+  --color-error: #cc3333;
+  --color-success: #4bb544;
+  --color-light: #eaeaea;
+  --color-dark-grey: #393c49;
+
+  /* font size */
+  --font-size-default: 18px;
+  --font-size-small: 14px;
+  --font-size-normal: 20px;
+
+  /* text  */
+  --text-white-color: #fff;
+
+  /* radius */
+  --radius-primary: 8px;
+
+  /* box shadow */
+  --shadow-primary: 0px 12px 32px 0px rgba(0, 0, 0, 0.05),
+    0px 2px 4px 0px rgba(28, 5, 77, 0.1);
+  --shadow-secondary: 0px 12px 32px 0px rgba(0, 0, 0, 0.05),
+    0px 2px4px 0px rgba(28, 5, 77, 0.1);
+  --shadow-tertiary: 0px 8px 24px 0px rgba(234, 124, 105, 0.40);
+}

@@ -1,0 +1,31 @@
+.modal-del {
+  z-index: 10;
+  background-color: #00000080;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  position: fixed;
+  inset: 0;
+}
+
+.modal-confirm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 477px;
+  background-color: var(--color-default);
+  border-radius: var(--radius-primary);
+  padding: 20px;
+}
+
+.confirm-title {
+  color: var(--color-secondary);
+  margin-bottom: 50px;
+}
+
+.confirm-btn {
+  display: flex;
+  gap: 60px;
+}
