@@ -1,11 +1,110 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <script type="module" src="../ts/main.ts"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../css/main.css" />
+  <title>Foods Management</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="wrapper">
+      <header class="header">
+        <a class="link-title" href="/">
+          <h1 class="header-title">Foods Management</h1>
+        </a>
+        <nav class="header-nav">
+          <div class="nav-heading">
+            <form class="form-search">
+              <img src="../assets/icon/icon_search.svg" class="icon-search" loading="eager" alt="search" />
+              <input type="search" id="search" class="input-search" placeholder="Search for food, coffe, etc.." />
+            </form>
+            <a class="nav-login" href="./authen.html">
+              <img src="../assets/icon/icon_login.svg" class="icon-login" alt="login" />
+            </a>
+          </div>
+          <select class="sort-dropdown">
+            <option class="dropdown-item" selected="selected" hidden>Sort by</option>
+            <optgroup class="dropdown-wrapper" label="By Name">
+              <option class="dropdown-item" value="name-asc">
+                Ascending
+              </option>
+              <option class="dropdown-item" value="name-dec">
+                Descending
+              </option>
+            </optgroup>
+            <optgroup class="dropdown-wrapper" label="By Price">
+              <option class="dropdown-item" value="price-asc">
+                Ascending
+              </option>
+              <option class="dropdown-item" value="price-dec">
+                Descending
+              </option>
+            </optgroup>
+          </select>
+        </nav>
+      </header>
+      <main class="main-content">
+        <section class="section-manage">
+          <div id="manage-list" class="manage-list">
+            <div id="add-card" class="manage-card">
+              <div class="card-wrapper">
+                <p class="manage-title">Add new dish</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <div id="modal-overlay" class="modal-overlay hidden">
+      <div class="manage-modal">
+        <h2 id="modal-title" class="modal-title">Edit</h2>
+        <form id="modal-form" class="modal-form">
+          <div class="form-item">
+            <label for="name" class="form-title">Name</label>
+            <input type="text" class="form-input" id="name" name="name" />
+            <p id="name-error" class="error-message"></p>
+          </div>
+          <div class="form-item">
+            <label for="price" class="form-title">Price</label>
+            <input type="number" class="form-input" id="price" name="price" />
+            <p id="price-error" class="error-message"></p>
+          </div>
+          <div class="form-item">
+            <label for="image" class="form-title">Image</label>
+            <input type="text" class="form-input" id="image" name="image" />
+            <p id="image-error" class="error-message"></p>
+          </div>
+          <div class="form-item is-special">
+            <label for="quantity" class="form-title">Quantity</label>
+            <input type="number" class="form-input is-size" id="quantity" name="quantity" />
+            <p id="quantity-error" class="error-message"></p>
+          </div>
+          <div class="form-btn">
+            <button id="close-btn" type="button" class="btn btn-cancel">
+              Cancel
+            </button>
+            <button type="button" id="btn-add" class="btn btn-add-product">Add</button>
+            <!-- <button type="button" class="btn btn-edit-product">Edit</button> -->
+          </div>
+        </form>
+      </div>
+    </div>
+    <div id="modal-del" class="modal-del">
+      <div class="modal-confirm">
+        <h2 class="confirm-title">Are you sure you want to delete this food?</h2>
+        <div class="confirm-btn">
+          <button type="button" id="btn-cancel" class="btn btn-cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <div id="toggle" class="toggle">
+      <img class="toggle-icon" src="../assets/icon/icon_toggle.svg" alt="toggle icon" />
+    </div>
+  </div>
+  <script type="module" src="../ts/main.ts"></script>
+</body>
+
 </html>
