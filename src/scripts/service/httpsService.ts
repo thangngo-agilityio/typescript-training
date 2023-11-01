@@ -1,6 +1,5 @@
 import { API_HEADERS, HTTP_METHOD, MOCK } from "@/constants/common";
 
-
 /**
  * @class HttpsService
  * Manages the common data
