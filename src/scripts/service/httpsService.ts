@@ -55,7 +55,7 @@ export default class HttpsService<T> {
    * @param {Number} id
    * @returns data after request
    */
-  getById = async (id: number, query?: string): Promise<T> => {
+  getById = async (id: string, query?: string): Promise<T> => {
     try {
       const url = `${this.fullPath}/${id}?${query}`;
       const response = await fetch(url);
@@ -72,7 +72,7 @@ export default class HttpsService<T> {
    * @param {String} path
    * @returns data after request
    */
-  delete = async (id: number): Promise<void> => {
+  delete = async (id: string): Promise<T> => {
     try {
       const response = await fetch(this.fullPath + `/${id}`, {
         method: HTTP_METHOD.DELETE,
@@ -89,7 +89,7 @@ export default class HttpsService<T> {
    * @param {String} path
    * @body {object} data
    */
-  put = async (data: T, id: number): Promise<T> => {
+  put = async (data: T, id: string): Promise<T> => {
     try {
       const response = await fetch(`${this.fullPath}/${id}`, {
         method: HTTP_METHOD.PUT,
