@@ -47,6 +47,6 @@ export const authenValidator = (user: Partial<UserSignUp>, type: FormType): Form
     case FormType.SIGNIN:
       return validateFormSignIn(user);
     default:
-      return {}
+      return {};
   }
 }
