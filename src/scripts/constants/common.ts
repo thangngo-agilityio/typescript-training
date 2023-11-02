@@ -12,3 +12,7 @@ export enum API_HEADERS {
 export enum MOCK {
   API = `https://65090e4ff6553137159ae935.mockapi.io/api/`
 }
+
+// Max message popup
+export const MAX_POPUP = 5;
+
