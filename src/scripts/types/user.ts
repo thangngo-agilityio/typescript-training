@@ -9,3 +9,5 @@ export interface UserSignUp {
   password: string;
   confirmPassword?: string;
 }
+
+export type UserSignIn = Omit<User, 'id'>;
