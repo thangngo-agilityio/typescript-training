@@ -1,4 +1,5 @@
-import { API_HEADERS, HTTP_METHOD, MOCK } from "@/constants/common";
+import { API_HEADERS, HTTP_METHOD, MOCK } from "@/types/service";
+
 
 /**
  * @class HttpsService
@@ -25,8 +26,9 @@ export default class HttpsService<T> {
         body: JSON.stringify(data),
       });
       return response.json()
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-      return error;
+      return error
     }
   };
 
@@ -41,6 +43,7 @@ export default class HttpsService<T> {
       const url = `${this.fullPath}?${query}`;
       const response = await fetch(url);
       return response.json();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       return error;
     }
@@ -58,6 +61,7 @@ export default class HttpsService<T> {
       const response = await fetch(url);
 
       return response.json();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       return error
     }
@@ -74,6 +78,7 @@ export default class HttpsService<T> {
         method: HTTP_METHOD.DELETE,
       });
       return response.json()
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       return error;
     }
@@ -92,6 +97,7 @@ export default class HttpsService<T> {
         body: JSON.stringify(data),
       });
       return response.json();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       return error;
     }
