@@ -1,4 +1,4 @@
-import { FormError } from "@/types/formTypes";
+import { FormError } from "@/types/form";
 import { getElementById, querySelector, querySelectorAll } from "../doms";
 
 /**

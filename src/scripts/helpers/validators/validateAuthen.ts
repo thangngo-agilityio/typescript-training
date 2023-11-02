@@ -1,6 +1,6 @@
 import { UserSignIn, UserSignUp } from "@/types/user";
 import { validateConfirmPassword, validateEmail, validatePassword } from "./validateInput";
-import { FormError, FormType } from "@/types/formTypes";
+import { FormError, FormType } from "@/types/form";
 
 /**
  * @description handle validate form sign in

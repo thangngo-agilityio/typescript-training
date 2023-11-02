@@ -3,7 +3,8 @@ import { getElementById, querySelector } from "@/helpers/doms";
 import { isEmpty } from "@/helpers/empty";
 import { clearError, removeErrorMessage, showError } from "@/helpers/validators/formError";
 import { authenValidator } from "@/helpers/validators/validateAuthen";
-import { FormType } from "@/types/formTypes";
+import { Popup } from "@/templates/popup";
+import { FormType } from "@/types/form";
 import { UserSignIn } from "@/types/user";
 
 /**
@@ -23,6 +24,7 @@ export default class AuthenView {
   private titleAuthen: HTMLTitleElement;
   private signInEvent: ((user: UserSignIn) => Promise<void>) | null;
   private signUpEvent: ((user: UserSignIn) => Promise<void>) | null;
+  private popup: Popup = new Popup()
   constructor() {
     this.loginForm = querySelector<HTMLFormElement>('#form-login');
     this.emailElement = getElementById<HTMLInputElement>('email');
