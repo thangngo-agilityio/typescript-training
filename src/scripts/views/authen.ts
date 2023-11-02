@@ -1,4 +1,9 @@
+import { AUTHEN_MESSAGE } from "@/constants/message";
 import { getElementById, querySelector } from "@/helpers/doms";
+import { isEmpty } from "@/helpers/empty";
+import { clearError, removeErrorMessage, showError } from "@/helpers/validators/formError";
+import { authenValidator } from "@/helpers/validators/validateAuthen";
+import { FormType } from "@/types/formTypes";
 import { UserSignIn } from "@/types/user";
 
 /**
@@ -32,5 +37,33 @@ export default class AuthenView {
     this.signUpEvent = null;
   }
 
+  /**
+   * @description get value form sign in
+   */
+  formSignInEventHandler = async (e: SubmitEvent) => {
+    e.preventDefault();
+    removeErrorMessage();
 
+
+    const user = {
+      email: this.emailElement.value.trim() && this.emailElement.value.toLowerCase() || '',
+      password: this.passwordElement.value.trim() || '',
+    };
+    const isError = authenValidator(user, FormType.SIGNIN);
+
+    if (!isEmpty(isError)) {
+      showError(isError);
+      this.popup.error({
+        message: AUTHEN_MESSAGE.LOGIN_ERROR
+      })
+    } else {
+      if (this.signInEvent) {
+        clearError()
+        await this.signInEvent(user)
+        this.popup.success({
+          message: AUTHEN_MESSAGE.LOGIN_SUCCESS
+        })
+      }
+    }
+  }
 }
