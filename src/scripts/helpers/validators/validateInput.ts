@@ -5,11 +5,13 @@ const validateRequired = (value = '', field: string): string | undefined => {
   return value ? undefined : VALIDATE_MESSAGE.REQUIRED_ERROR.replace('{field}', field);
 };
 
+
+
 /**
  * @description handle validate email
  * @param email
  */
-export const validateEmail = (email = ''): string | undefined  => {
+export const validateEmail = (email = ''): string | undefined => {
   if (!email) {
     return validateRequired(email, 'Email');
   }
