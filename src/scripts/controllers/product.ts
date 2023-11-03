@@ -15,7 +15,8 @@ export default class ProductController {
 
   init = async (): Promise<void> => {
     await this.showProduct()
-    await this.view.bindAddProduct(this.addProduct)
+    this.view.bindAddProduct(this.addProduct)
+    this.view.bindDelProduct(this.delProduct)
   }
 
   showProduct = async (query?: string): Promise<void> => {
@@ -28,8 +29,13 @@ export default class ProductController {
 
   addProduct = async (data: Product): Promise<void> => {
     handleToggleLoading(TOGGLE_STATUS.isShown);
-    const addData = await this.model.handleAddProduct(data);
-    this.view.displayProduct(addData);
+    await this.model.handleAddProduct(data);
+    this.showProduct()
     handleToggleLoading(TOGGLE_STATUS.isHidden);
+  }
+
+  delProduct = async (id: string): Promise<void> => {
+    await this.model.handleDelProduct(id);
+    this.showProduct()
   }
 }

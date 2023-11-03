@@ -95,6 +95,36 @@ export default class ProductView {
     }
   };
 
+  handleDelProduct(handler: (id: string) => void): void {
+    if (this.listProduct) {
+      this.listProduct.addEventListener('click', (e: MouseEvent) => {
+        const target = e.target as Element;
+        const btnDel = target.closest<HTMLButtonElement>('.btn-del');
+
+        if (btnDel) {
+          const productId = btnDel.dataset.id as string;
+          this.modalDel.style.display = 'flex';
+          const confirmBtn = querySelector<HTMLButtonElement>('.confirm-btn');
+          const confirmYes = createElement<HTMLButtonElement>('button');
+          confirmYes.setAttribute('class', 'btn btn-yes');
+          confirmYes.textContent = 'Yes';
+          confirmBtn.appendChild(confirmYes);
+
+          confirmYes.addEventListener('click', () => {
+            if (confirmYes) {
+              handler(productId);
+              this.modalDel.style.display = 'none';
+              confirmYes.remove();
+              this.popup.success({
+                message: PRODUCT_MESSAGE.REMOVE_SUCCESS,
+              });
+            }
+          });
+        }
+      });
+    }
+  }
+
   bindAddProduct = (handler: AddProduct): void => {
     if (this.btnAdd) {
       this.btnAdd.addEventListener('click', (e) => {
@@ -103,6 +133,10 @@ export default class ProductView {
         this.handleAddProduct(handler);
       });
     }
+  };
+
+  bindDelProduct = (handler: (id: string) => void): void => {
+    this.handleDelProduct(handler);
   };
 
   bindManageEvent() {
