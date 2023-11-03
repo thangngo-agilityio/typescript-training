@@ -1,5 +1,7 @@
-import { querySelector, querySelectorAll } from "@/helpers/doms";
+import { createElement, querySelector, querySelectorAll } from "@/helpers/doms";
 import { Popup } from "@/templates/popup";
+import { productTemplate } from "@/templates/productCard";
+import { Product } from "@/types/product";
 
 /**
  * @class ProductView
@@ -37,5 +39,27 @@ export default class ProductView {
     this.imageElement = querySelector<HTMLInputElement>('#image');
     this.quantityElement = querySelector<HTMLInputElement>('#quantity');
     this.inputAll = querySelectorAll('.form-input');
+  }
+
+  displayProduct(data: Product[]): void {
+    if (this.listProduct && this.listProduct.lastElementChild !== null) {
+      while (this.listProduct.lastElementChild.id !== 'add-card') {
+        this.listProduct.removeChild(this.listProduct.lastElementChild);
+      }
+    }
+
+    if (data.length > 0) {
+      data.forEach((product) => {
+        const divProduct = createElement('div');
+        divProduct.setAttribute('class', 'product-card');
+        divProduct.innerHTML = productTemplate(product);
+        this.listProduct.append(divProduct);
+      });
+    } else {
+      const emptyMessage = createElement('p');
+      emptyMessage.setAttribute('class', 'empty-message')
+      emptyMessage.innerHTML = `No food items available!!`
+      this.listProduct.append(emptyMessage)
+    }
   }
 }
