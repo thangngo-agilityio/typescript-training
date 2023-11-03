@@ -74,9 +74,8 @@ export default class ProductModel {
    */
   handleEditProduct = async (data: Product, id: string): Promise<Product[]> => {
     const updateProduct = await this.productService.put(data, id);
-    // const getData = await this.getProduct()
 
-    if (updateProduct) {
+    if (updateProduct !== undefined) {
       const updateProductList = [...this.productList]
       const updateProductIndex = updateProductList.findIndex(product => product.id === id)
 
