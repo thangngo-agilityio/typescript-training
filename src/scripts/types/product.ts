@@ -1,9 +1,11 @@
 export interface Product {
   id: string;
   name: string;
-  price: number;
+  price: string;
   image: string;
-  quantity: number
+  quantity: string
 }
 
 export type ProductCard = Omit<Product, 'id'>
+
+export type AddProduct = ((product: Product) => Promise<void>)
