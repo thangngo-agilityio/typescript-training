@@ -17,12 +17,15 @@ export default class ProductController {
     await this.showProduct()
     this.view.bindAddProduct(this.addProduct)
     this.view.bindDelProduct(this.delProduct)
+    this.view.bindDetailProduct(this.detailProduct)
+    this.view.updateProduct = this.updateProduct
   }
 
   showProduct = async (query?: string): Promise<void> => {
     handleToggleLoading(TOGGLE_STATUS.isShown);
     const data = await this.model.getProduct(query);
     this.view.bindManageEvent()
+    this.view.bindSearchProduct(data)
     this.view.displayProduct(data);
     handleToggleLoading(TOGGLE_STATUS.isHidden);
   }
@@ -37,5 +40,15 @@ export default class ProductController {
   delProduct = async (id: string): Promise<void> => {
     await this.model.handleDelProduct(id);
     this.showProduct()
+  }
+
+  detailProduct = async (id: string): Promise<void> => {
+    const data = await this.model.getProductById(id);
+    this.view.renderProductDetail(data)
+  }
+
+  updateProduct = async (data: Product): Promise<void> => {
+    await this.model.handleEditProduct(data, data.id);
+    this.showProduct();
   }
 }
