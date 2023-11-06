@@ -25,6 +25,8 @@ export default class ProductController {
     handleToggleLoading(TOGGLE_STATUS.isShown);
     const data = await this.model.getProduct(query);
     this.view.bindManageEvent()
+    this.view.bindButtonLogout()
+    this.view.bindSortProduct(data)
     this.view.bindSearchProduct(data)
     this.view.displayProduct(data);
     handleToggleLoading(TOGGLE_STATUS.isHidden);

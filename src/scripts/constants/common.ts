@@ -5,3 +5,6 @@ export const TOGGLE_STATUS = {
   isShown: true,
   isHidden: false,
 };
+
+export const ORDER_DESC = 'desc';
+export const SORT_DEFAULT = 'name';

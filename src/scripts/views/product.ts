@@ -10,6 +10,7 @@ import { UpdateProduct } from '../types/product';
 import { PopupStatus } from "@/types/popupStatus";
 import { handleToggleLoading } from "@/helpers/toggle";
 import { TOGGLE_STATUS } from "@/constants/common";
+import { sortNameAsc, sortNameDec, sortPriceAsc, sortPriceDec } from "@/helpers/sortValue";
 
 /**
  * @class ProductView
@@ -224,6 +225,42 @@ export default class ProductView {
     }
   };
 
+  /**
+   * @description handler sort product
+   */
+  handleSortProduct = (data: Product[]): void => {
+    const sortSelect = querySelector<HTMLSelectElement>('.sort-dropdown');
+
+    if (sortSelect) {
+      sortSelect.addEventListener('change', async (e: Event) => {
+        e.preventDefault();
+        const target = (e.target as HTMLSelectElement).value
+        handleToggleLoading(TOGGLE_STATUS.isShown);
+
+        setTimeout(() => {
+          switch (target) {
+            case 'name-asc':
+              sortNameAsc(data);
+              break;
+            case 'name-dec':
+              sortNameDec(data);
+              break;
+            case 'price-asc':
+              sortPriceAsc(data);
+              break;
+            case 'price-dec':
+              sortPriceDec(data);
+              break;
+            default:
+              break;
+          }
+          this.displayProduct(data);
+          handleToggleLoading(TOGGLE_STATUS.isHidden);
+        }, 500);
+      });
+    }
+  };
+
   bindAddProduct = (handler: AddProduct): void => {
     if (this.btnAdd) {
       this.btnAdd.addEventListener('click', (e) => {
@@ -244,6 +281,18 @@ export default class ProductView {
 
   bindSearchProduct = (data: Product[]): void => {
     this.handleSearchProduct(data);
+  };
+
+  bindSortProduct = (data: Product[]): void => {
+    this.handleSortProduct(data);
+  };
+
+  bindButtonLogout = () => {
+    const btnAccount = querySelector<HTMLButtonElement>('.nav-login');
+    const isAuth = localStorage?.getItem('LOGIN');
+    if (isAuth) {
+      btnAccount.innerHTML = `<img class='btn-logout' src="/svgs/icon_logout.svg" alt="logout" />`;
+    }
   };
 
   bindManageEvent() {
