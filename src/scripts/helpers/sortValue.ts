@@ -1,9 +1,13 @@
 import { Product } from "@/types/product"
 
 const sortAsc = (key: string) => {
-  return (a: Product, b: Product): number => (a[key] > b[key]) ? 1 : (b[key] > a[key]) ? -1 : 0
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error
+  return (a: Product, b: Product) => (a[key] > b[key]) ? 1 : (b[key] > a[key]) ? -1 : 0
 }
 const sortDesc = (key: string) => {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error
   return (a: Product, b: Product) => (a[key] < b[key]) ? 1 : (b[key] < a[key]) ? -1 : 0
 }
 
