@@ -1,5 +1,5 @@
 import { PRODUCT_MESSAGE } from "@/constants/message";
-import { createElement, querySelector, querySelectorAll } from "@/helpers/doms";
+import { createElement, querySelector } from "@/helpers/doms";
 import { getFormValues } from "@/helpers/formValue";
 import { clearError, removeErrorMessage, showError } from "@/helpers/validators/formError";
 import { validateForm } from "@/helpers/validators/validateForm";
@@ -10,7 +10,7 @@ import { UpdateProduct } from '../types/product';
 import { PopupStatus } from "@/types/popupStatus";
 import { handleToggleLoading } from "@/helpers/toggle";
 import { TOGGLE_STATUS } from "@/constants/common";
-import { sortNameAsc, sortNameDec, sortPriceAsc, sortPriceDec } from "@/helpers/sortValue";
+import { OrderByArray } from "@/helpers/sortValue";
 
 /**
  * @class ProductView
@@ -31,7 +31,6 @@ export default class ProductView {
   private priceElement: HTMLInputElement;
   private imageElement: HTMLInputElement
   private quantityElement: HTMLInputElement;
-  private inputAll: NodeListOf<HTMLInputElement>;
   private popup: Popup = new Popup();
   updateProduct: UpdateProduct;
   constructor() {
@@ -48,7 +47,6 @@ export default class ProductView {
     this.priceElement = querySelector<HTMLInputElement>('#price');
     this.imageElement = querySelector<HTMLInputElement>('#image');
     this.quantityElement = querySelector<HTMLInputElement>('#quantity');
-    this.inputAll = querySelectorAll('.form-input');
     this.updateProduct = null;
   }
 
@@ -240,16 +238,16 @@ export default class ProductView {
         setTimeout(() => {
           switch (target) {
             case 'name-asc':
-              sortNameAsc(data);
+              OrderByArray(data, 'name')
               break;
             case 'name-dec':
-              sortNameDec(data);
+              OrderByArray(data, 'name').reverse()
               break;
             case 'price-asc':
-              sortPriceAsc(data);
+              OrderByArray(data, 'price')
               break;
             case 'price-dec':
-              sortPriceDec(data);
+              OrderByArray(data, 'price').reverse()
               break;
             default:
               break;

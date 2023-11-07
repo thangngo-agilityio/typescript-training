@@ -25,7 +25,7 @@ export const querySelectorAll = <T extends HTMLElement>(selector: string) => {
  * @returns html element
  */
 export function getElementById<T>(selector: string) {
-  return document?.getElementById(selector) as T;
+  return document.getElementById(selector) as T;
 }
 
 /**
