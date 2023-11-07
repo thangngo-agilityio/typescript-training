@@ -10,7 +10,7 @@ import { UpdateProduct } from '../types/product';
 import { PopupStatus } from "@/types/popupStatus";
 import { handleToggleLoading } from "@/helpers/toggle";
 import { TOGGLE_STATUS } from "@/constants/common";
-import { sortNameAsc, sortNameDec, sortPriceAsc, sortPriceDec } from "@/helpers/sortValue";
+import { OrderByArray } from "@/helpers/sortValue";
 
 /**
  * @class ProductView
@@ -240,16 +240,16 @@ export default class ProductView {
         setTimeout(() => {
           switch (target) {
             case 'name-asc':
-              sortNameAsc(data);
+              OrderByArray(data, 'name')
               break;
             case 'name-dec':
-              sortNameDec(data);
+              OrderByArray(data, 'name').reverse()
               break;
             case 'price-asc':
-              sortPriceAsc(data);
+              OrderByArray(data, 'price')
               break;
             case 'price-dec':
-              sortPriceDec(data);
+              OrderByArray(data, 'price').reverse()
               break;
             default:
               break;

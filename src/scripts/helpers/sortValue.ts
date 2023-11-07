@@ -1,29 +1,40 @@
-import { Product } from "@/types/product"
+// import { Product } from "@/types/product"
 
-const sortAsc = (key: string) => {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-expect-error
-  return (a: Product, b: Product) => (a[key] > b[key]) ? 1 : (b[key] > a[key]) ? -1 : 0
-}
-const sortDesc = (key: string) => {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-expect-error
-  return (a: Product, b: Product) => (a[key] < b[key]) ? 1 : (b[key] < a[key]) ? -1 : 0
-}
+// const sortAsc = (key: string) => {
 
-export const sortNameAsc = (data: Product[]): void => {
-  data.sort(sortAsc('name'))
-}
+//   return (a, b) => (a[key] > b[key]) ? 1 : (b[key] > a[key]) ? -1 : 0
+// }
+// const sortDesc = (key: string) => {
 
-export const sortNameDec = (data: Product[]): void => {
-  data.sort(sortDesc('name'))
-}
+//   return (a, b) => (a[key] < b[key]) ? 1 : (b[key] < a[key]) ? -1 : 0
+// }
 
-export const sortPriceAsc = (data: Product[]): void => {
-  data.sort(sortAsc('price'))
-}
+// export const sortNameAsc = (data: Product[]): void => {
+//   data.sort(sortAsc('name'))
+// }
 
-export const sortPriceDec = (data: Product[]): void => {
-  data.sort(sortDesc('price'))
+// export const sortNameDec = (data: Product[]): void => {
+//   data.sort(sortDesc('name'))
+// }
+
+// export const sortPriceAsc = (data: Product[]): void => {
+//   data.sort(sortAsc('price'))
+// }
+
+// export const sortPriceDec = (data: Product[]): void => {
+//   data.sort(sortDesc('price'))
+// }
+
+
+export function OrderByArray<T, K extends keyof T>(values: T[], orderType: K) {
+  return values.sort((a, b) => {
+    if (a[orderType] < b[orderType]) {
+      return -1;
+    }
+    if (a[orderType] > b[orderType]) {
+      return 1;
+    }
+    return 0
+  })
 }
 
