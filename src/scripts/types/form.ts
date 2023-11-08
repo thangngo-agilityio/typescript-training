@@ -3,6 +3,6 @@ export enum FormType {
   SIGNIN
 }
 
-export interface FormError {
+export type FormError = {
   [key: string]: string;
 }

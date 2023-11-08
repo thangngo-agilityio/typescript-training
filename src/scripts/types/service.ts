@@ -5,10 +5,10 @@ export enum HTTP_METHOD {
   DELETE = 'DELETE'
 }
 
-export enum API_HEADERS {
-  'Content-Type' = 'application/json'
+export const API_HEADERS = {
+  'Content-Type': 'application/json'
 }
 
-export enum MOCK {
-  API = `https://65090e4ff6553137159ae935.mockapi.io/api/`
+export const MOCK = {
+  API: `https://65090e4ff6553137159ae935.mockapi.io/api/`
 }
